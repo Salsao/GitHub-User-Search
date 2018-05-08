@@ -19,22 +19,21 @@
         };
 
         const url = 'https://api.github.com/';
-        const accessToken = 'access_token=bf4081fb7e694b5676f6ffe6c791212fd6a8a82a';
 
         function getUsers(param) {
-            return $http.get(url + 'search/users?q=' + param + '&' + accessToken);
+            return $http.get(url + 'search/users?q=' + param);
         }
 
         function getDataUser(userLogin) {
-            return $http.get(url + 'users/' + userLogin + '?' + accessToken);
+            return $http.get(url + 'users/' + userLogin);
         }
 
         function getFollowersUser(userLogin) {
-            return $http.get(url + 'users/' + userLogin + '/followers?' + accessToken);
+            return $http.get(url + 'users/' + userLogin + '/followers');
         }
 
         function getFollowingUser(userLogin) {
-            return $http.get(url + 'users/' + userLogin + '/following?' + accessToken);
+            return $http.get(url + 'users/' + userLogin + '/following');
         }
 
         return service;
