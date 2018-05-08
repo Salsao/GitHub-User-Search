@@ -54,7 +54,7 @@
 				    	<h4 class="text-red">{{vm.errorDetails}}</h4>
 				    	<span ng-hide="vm.errorDetails">
 					    	<h4>{{user.name ? user.name : 'User without a name'}}</h4>
-					    	<h5>Email: {{user.email ? user.email : 'User without an email'}} - Registration date: {{user.registrationDate | date: 'dd/MM/yyyy'}}</h5>
+					    	<h5>Email: {{user.email ? user.email : 'User without an email or private email'}} - Registration date: {{user.registrationDate | date: 'dd/MM/yyyy'}}</h5>
 				    	</span>
 				    	<h4 class="text-red">{{vm.errorFollowers}}</h4>
 				    	<h4 class="text-red">{{vm.errorFollowing}}</h4>
