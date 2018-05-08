@@ -1,0 +1,29 @@
+.mt-10 {
+	margin-top: 10px;
+}
+
+.bg-green {
+	background-color: #20b805;
+}
+
+.text-white {
+	color: white;
+}
+
+.text-red {
+	color: #ba2f33;
+}
+
+.rounded {
+  border-radius: .55rem;
+}
+
+/* overwriting */
+.panel-default > .panel-heading:hover {
+	background-color: #d9d9d9;
+	opacity: .9;
+}
+
+a:focus, a:hover {
+	text-decoration: none;
+}

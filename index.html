@@ -1,0 +1,69 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="css/index.css">
+  	<link rel="stylesheet" href="css/loading.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="index.module.js"></script>
+    <script src="core.module.js"></script>
+    <script src="app.module.js"></script>
+    <script src="api-index.service.js"></script>
+    <script src="loading.service.js"></script>
+    <script src="index.controller.js"></script>
+  </head>
+  <body ng-controller="HomeController as vm">
+
+  	<div ng-show="loading">
+		  <div id="loading-window">
+		    <div class="sk-wave">
+		      <div class="sk-rect sk-rect1"> </div>
+		      <div class="sk-rect sk-rect2"> </div>
+		      <div class="sk-rect sk-rect3"> </div>
+		      <div class="sk-rect sk-rect4"> </div>
+		      <div class="sk-rect sk-rect5"> </div>
+		      <div id="loading-word">Loading</div>
+		    </div>
+		  </div>
+		  <div class="overlay-full-page"></div>
+		</div>
+
+  	<div class="container">
+  		<div class="row bg-green text-white rounded">
+  			<div class="col-sm-12">
+  				<h2 class="text-center">GitHub User Search</h2>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-sm-12 mt-10">
+  				<input class="form-control" placeholder="Search user" ng-model="param" ng-model-options='{ debounce: 850 }' ng-change="vm.searchUser(param)" type="text" name="name">
+  			</div>
+  		</div>
+  		<div class="row mt-10">
+  			<div class="col-sm-12">
+  				<h4 class="text-red">{{vm.errorSearch}}</h4>
+  				<uib-accordion>
+				    <div uib-accordion-group class="panel-default" ng-repeat="user in vm.users" heading="{{user.login}}" ng-click="vm.getDetails(user)">
+				    	<h4 class="text-red">{{vm.errorDetails}}</h4>
+				    	<span ng-hide="vm.errorDetails">
+					    	<h4>{{user.name ? user.name : 'User without a name'}}</h4>
+					    	<h5>Email: {{user.email ? user.email : 'User without an email'}} - Registration date: {{user.registrationDate | date: 'dd/MM/yyyy'}}</h5>
+				    	</span>
+				    	<h4 class="text-red">{{vm.errorFollowers}}</h4>
+				    	<h4 class="text-red">{{vm.errorFollowing}}</h4>
+				    	<h5><span ng-hide="vm.errorFollowers">{{user.followers}} Followers</span>  <span ng-hide="vm.errorFollowing">{{user.following}} Following</span></h5>
+				    </div>
+				  </uib-accordion>
+  			</div>
+  		</div>
+  	</div>
+
+  </body>
+</html>
